@@ -4,9 +4,17 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-sqlalchemy = "*"
 alembic = "*"
 fastapi = {extras = ["standard"], version = "*"}
+sqlalchemy = "*"
+python-jose = {extras = ["cryptography"], version = "*"}
+passlib = {extras = ["bcrypt"], version = "*"}
+pyjwt = "*"
+python-decouple = "*"
+python-multipart = "*"
+uvicorn = "*"
+pydantic = "*"
+databases = "*"
 
 [dev-packages]
 

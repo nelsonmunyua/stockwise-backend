@@ -71,7 +71,7 @@ class Product(Base):
     name = Column(Text(), nullable=False)
     price = Column(Integer(), nullable=False)
     quantity = Column(Integer(), nullable=False)
-    category_id = Column(Integer(), ForeignKey("category_id"), nullable=False)
+    category_id = Column(Integer(), ForeignKey("category.id"), nullable=False)
 
             # relationship
 
