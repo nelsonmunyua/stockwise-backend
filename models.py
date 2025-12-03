@@ -44,7 +44,7 @@ class User(Base):
     created_at = Column(DateTime, default= datetime.now())
 
     # relationship -> user has many orders
-    orders = relationship("Orders", back_populates="user")
+    orders = relationship("Order", back_populates="user")
 
     #  --------------------
     #    CATEGORY MODEL
@@ -58,7 +58,7 @@ class Category(Base):
     description = Column(Text())
 
         # relationship category has many products
-    products = relationship("Products", back_populates="category")
+    products = relationship("Product", back_populates="category")
 
         # ------------------
         #   PRODUCT MODEL
@@ -82,7 +82,7 @@ class Product(Base):
             #   ORDERS MODEL
             # ------------------
 
-class Orders(Base):
+class Order(Base):
     __tablename__ = "orders"
 
     id = Column(Integer(), primary_key=True)
@@ -91,7 +91,7 @@ class Orders(Base):
     user_id = Column(Integer(), ForeignKey("users.id"), nullable=False)
 
                 # relationship
-    user = relationship("Users", back_populates="order")
+    user = relationship("User", back_populates="orders")
     items = relationship("OrderItems", back_populates="order")
 
 
@@ -109,8 +109,8 @@ class OrderItems(Base):
     subtotal = Column(Integer(), nullable=False)
 
     # relationship
-    product = relationship("Product", back_populates="order_items")
-    order = relationship("Orders", back_populates="items")
+    product = relationship("Product", back_populates="orders_items")
+    order = relationship("Order", back_populates="items")
 
                 
     
